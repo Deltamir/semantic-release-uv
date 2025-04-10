@@ -1,12 +1,10 @@
-image: node:lts
-
 stages:
   - deploy
 
-rules:
-- if: $CI_COMMIT_TAG
-
 deploy:
+  image: node:lts
   stage: deploy
   script:
     - yarn publish
+  rules:
+    - if: $CI_COMMIT_TAG 
