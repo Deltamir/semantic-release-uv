@@ -67,9 +67,9 @@ node-sbom:
       cyclonedx:
         - reports/node-sbom.cyclonedx.json
 
-deploy:
+node-deploy:
   extends: .node
-  stage: publish
+  stage: deploy
   script:
     - yarn npm publish --non-interactive
   rules:
