@@ -42,7 +42,7 @@ node-test:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: "report/cobertura-coverage.xml"
+        path: report/cobertura-coverage.xml
       junit:
         - report/junit.xml
     when: always
@@ -51,6 +51,7 @@ node-test:
     paths:
       - report/cobertura-coverage.xml
       - report/junit.xml
+  coverage: /Statements\s*:\s*([^%]+)/
 
 node-sbom:
   extends: .node

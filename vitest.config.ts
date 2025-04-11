@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config'
+import { coverageConfigDefaults, defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
@@ -9,7 +9,8 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul',
       reportsDirectory: "report",
-      reporter: ['cobertura']
+      reporter: ['cobertura', 'text-summary'],
+      exclude: ['**/release.config**', ...coverageConfigDefaults.exclude]
     },
     setupFiles: ['tests/vitest.setup.ts']
   },
