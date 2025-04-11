@@ -62,7 +62,7 @@ node-sbom:
     expire_in: 1 week
     paths:
       - report/node-sbom.cyclonedx.json
-    report:
+    reports:
       cyclonedx:
         - report/node-sbom.cyclonedx.json
 
