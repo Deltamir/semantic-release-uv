@@ -1,3 +1,10 @@
+## [1.1.3](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.2...1.1.3) (2025-04-11)
+
+
+### Bug Fixes
+
+* Fixing rebasing job ([a8e2183](https://gitlab.com/open-resources/semantic-release-uv/commit/a8e2183fe2302445a9bb6bf0f9ff59a232b9608c))
+
 ## [1.1.2](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.1...1.1.2) (2025-04-11)
 
 
