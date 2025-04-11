@@ -1,3 +1,15 @@
+# [1.1.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.0.2...1.1.0) (2025-04-11)
+
+
+### Bug Fixes
+
+* Removing unused prepare command in package.json ([d95ec22](https://gitlab.com/open-resources/semantic-release-uv/commit/d95ec22a9435bab150d92f8849087a8619357cef))
+
+
+### Features
+
+* Adding prerealease train and pre-commit hooks ([f1ce8fe](https://gitlab.com/open-resources/semantic-release-uv/commit/f1ce8feaccd4971342a39a9b07379e0823b5faae))
+
 ## [1.0.2](https://gitlab.com/open-resources/semantic-release-uv/compare/1.0.1...1.0.2) (2025-04-11)
 
 
