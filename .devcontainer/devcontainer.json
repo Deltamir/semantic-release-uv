@@ -11,7 +11,7 @@
         "vitest.explorer"
       ]
     }
-  }
+  },
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
@@ -20,7 +20,10 @@
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "yarn install",
+  "postCreateCommand": {
+    "yarn": "yarn install",
+    "apt-get": "sudo apt-get update -qqy --no-install-recommends && sudo apt-get install pipx -qqy --no-install-recommends && pipx install pre-commit && pre-commit install"
+  }
 
   // Configure tool-specific properties.
   // "customizations": {},

@@ -44,7 +44,8 @@
     "lint:fix": "yarn lint:prettier:fix && yarn lint:eslint:fix",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prepare": "husky"
   },
   "packageManager": "yarn@4.9.1"
 }
