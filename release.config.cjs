@@ -33,7 +33,7 @@ module.exports = {
           },
           {
             path: "report/node-audit.json",
-            label: "NM audit Report",
+            label: "NPM audit Report",
           },
           {
             path: "report/cobertura-coverage.xml",
@@ -54,7 +54,7 @@ module.exports = {
       "@semantic-release/git",
       {
         message:
-          "chore(release): ${nextRelease.version} [skip ci on <%= branch %>]\n\n${nextRelease.notes}",
+          "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
         assets: ["CHANGELOG.md", "package.json", "yarn.lock"],
       },
     ],
