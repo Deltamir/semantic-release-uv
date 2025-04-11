@@ -1,3 +1,10 @@
+## [1.1.2](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.1...1.1.2) (2025-04-11)
+
+
+### Bug Fixes
+
+* Pipeline not rebasing ([4faec04](https://gitlab.com/open-resources/semantic-release-uv/commit/4faec041507a43601cb701c84f1a6e88ab95f07f))
+
 ## [1.1.1](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.0...1.1.1) (2025-04-11)
 
 
