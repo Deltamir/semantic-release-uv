@@ -31,7 +31,6 @@ node-lint:
         - report/node-lint.gitlab.json
   rules:
     - if: $CI_COMMIT_BRANCH
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 
 node-audit:
@@ -47,7 +46,6 @@ node-audit:
       - report/node-audit.json
   rules:
     - if: $CI_COMMIT_BRANCH
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 node-test:
   extends: .node
@@ -70,7 +68,6 @@ node-test:
   coverage: /Statements\s*:\s*([^%]+)/
   rules:
     - if: $CI_COMMIT_BRANCH
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 
 node-sbom:
