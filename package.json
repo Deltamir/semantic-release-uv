@@ -1,6 +1,6 @@
 {
   "name": "semantic-release-uv",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "src/index.ts",
   "repository": "https://gitlab.com/open-resources/semantic-release-uv.git",
   "author": "Deltamir <69438162+Deltamir@users.noreply.github.com>",
