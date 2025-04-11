@@ -3,7 +3,9 @@
   "version": "1.0.1",
   "main": "src/index.ts",
   "repository": "https://gitlab.com/open-resources/semantic-release-uv.git",
-  "publishConfig": {"registry": "https://registry.npmjs.org/"},
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "author": "Deltamir <69438162+Deltamir@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
