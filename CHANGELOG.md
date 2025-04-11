@@ -1,3 +1,10 @@
+## [1.1.1](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.0...1.1.1) (2025-04-11)
+
+
+### Bug Fixes
+
+* Fixing duplicate pipelines ([a8e3f4f](https://gitlab.com/open-resources/semantic-release-uv/commit/a8e3f4f26f650af10c0d8c5bf4325c574e96182b))
+
 # [1.1.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.0.2...1.1.0) (2025-04-11)
 
 
