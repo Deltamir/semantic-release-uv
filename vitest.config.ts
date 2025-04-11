@@ -4,11 +4,11 @@ export default defineConfig({
   test: {
     reporters: ['default', 'junit'],
     outputFile: {
-        junit: 'reports/junit.xml'
+        junit: 'report/junit.xml'
     },
     coverage: {
       provider: 'istanbul',
-      reportsDirectory: "reports",
+      reportsDirectory: "report",
       reporter: ['cobertura']
     },
     setupFiles: ['tests/vitest.setup.ts']

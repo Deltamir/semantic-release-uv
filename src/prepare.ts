@@ -30,7 +30,6 @@ async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
 
   (pyproject.project as { version: string }).version = version;
 
-
   fs.writeFileSync(pyprojectPath, TOML.stringify(pyproject), {
     encoding: "utf8",
     flag: "w",

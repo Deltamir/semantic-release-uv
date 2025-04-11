@@ -8,7 +8,7 @@ import { VerifyConditionsContext } from "semantic-release";
 
 async function verify(
   pluginConfig: PluginConfig,
-  context: VerifyConditionsContext
+  context: VerifyConditionsContext,
 ) {
   const { logger } = context;
   const { pyprojectPath, repoUrl } = new DefaultConfig(pluginConfig);
@@ -39,9 +39,13 @@ async function verify(
       body: form,
     });
   } catch (err: typeof RequestError | unknown) {
-    if (err instanceof RequestError && err.response && err.response.statusCode === 403) {
+    if (
+      err instanceof RequestError &&
+      err.response &&
+      err.response.statusCode === 403
+    ) {
       throw err;
-    } 
+    }
   }
 
   let toml: string;
