@@ -37,11 +37,11 @@
     "lint:prettier:fix": "prettier --write src/",
     "lint:eslint": "eslint src/",
     "lint:eslint:fix": "eslint src/ --fix",
-    "lint": "npm run lint:prettier && npm run lint:eslint",
-    "lint:fix": "npm run lint:prettier:fix && npm run lint:eslint:fix",
+    "lint": "yarn lint:prettier && yarn lint:eslint",
+    "lint:fix": "yarn lint:prettier:fix && yarn lint:eslint:fix",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "build": "tsc -p tsconfig.json"
   },
-  "packageManager": "npm@11.3.0"
+  "packageManager": "yarn@4.9.1"
 }
