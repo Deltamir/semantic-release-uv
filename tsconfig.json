@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+      "module": "NodeNext",
+      "target": "ES2016",
+      "moduleResolution": "NodeNext",
+      "declaration": true,
+      "strict": true,
+      "allowJs": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "types": [
+          "node",
+      ],
+      "skipLibCheck": true,
+      "alwaysStrict": true,
+      "sourceMap": true,
+      "outDir": "build",
+  },
+  "include": [
+      "src/**/*",
+      "tests/**/*.ts",
+      "vitest.config.ts"
+  ],
+    "$schema": "https://json.schemastore.org/tsconfig"
+  }

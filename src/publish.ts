@@ -1,15 +1,12 @@
-// @ts-ignore
-import TOML from "smol-toml";
-import fs from "fs";
 import { Options } from "execa";
-import { normalizeVersion, spawn } from "./utils.ts";
-import { DefaultConfig } from "./default-options.ts";
-import { PluginConfig } from "./types.ts";
+import { spawn } from "./utils";
+import { DefaultConfig } from "./default-options";
+import { PluginConfig } from "./types";
 import { PublishContext } from "semantic-release";
 
 async function publish(pluginConfig: PluginConfig, context: PublishContext) {
   const { logger } = context;
-  const { srcDir, distDir, repoUrl } = new DefaultConfig(pluginConfig);
+  const { repoUrl } = new DefaultConfig(pluginConfig);
 
   logger.log(`Publishing package to ${repoUrl}`);
 
@@ -28,11 +25,14 @@ async function publish(pluginConfig: PluginConfig, context: PublishContext) {
     throw new Error("Environment variable PYPI_TOKEN is not set");
   }
 
-  await spawn(
-    "uv",
-    ["publish", "--publish-url", repo, "--username", username, "--token", token as string],
-    execaOptions,
-  );
-
+  await spawn("uv", execaOptions, [
+    "publish",
+    "--publish-url",
+    repo,
+    "--username",
+    username,
+    "--token",
+    token as string,
+  ]);
 }
 export { publish };

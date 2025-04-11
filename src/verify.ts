@@ -1,10 +1,9 @@
-// @ts-ignore
 import TOML from "smol-toml";
-import got from "got";
+import got, { RequestError } from "got";
 import fs from "fs";
 import FormData from "form-data";
-import { DefaultConfig } from "./default-options.ts";
-import { PluginConfig } from "./types.ts";
+import { DefaultConfig } from "./default-options";
+import { PluginConfig } from "./types";
 import { VerifyConditionsContext } from "semantic-release";
 
 async function verify(
@@ -24,7 +23,7 @@ async function verify(
     throw new Error("Environment variable PYPI_TOKEN is not set");
   }
 
-  logger.log(`Verify authentication for ${username}@${repo}`);
+  logger.log(`Verifying authentication for ${username}@${repo}`);
 
   const form = new FormData();
   form.append(":action", "file_upload");
@@ -34,24 +33,29 @@ async function verify(
   };
 
   try {
-    await got(repoUrl, {
+    await got(repo, {
       method: "post",
       headers: Object.assign(headers, form.getHeaders()),
       body: form,
     });
-  } catch (err: any) {
-    if (err.response && err.response.statusCode == 403) {
+  } catch (err: typeof RequestError | unknown) {
+    if (err instanceof RequestError && err.response && err.response.statusCode === 403) {
       throw err;
-    }
+    } 
   }
 
+  let toml: string;
   logger.log("Parsing pyproject.toml");
-  const toml = fs.readFileSync(pyprojectPath, {
-    encoding: "utf8",
-    flag: "r",
-  });
+  try {
+    toml = fs.readFileSync(pyprojectPath, {
+      encoding: "utf8",
+      flag: "r",
+    });
+  } catch (err) {
+    throw new Error(`Error reading ${pyprojectPath}: ${err}`);
+  }
   const pyproject = TOML.parse(toml);
-  const version = pyproject.tool.poetry.version;
+  const version = (pyproject.project as { version: string })?.version;
   if (!version) {
     throw new Error("Could not find version in pyproject.toml");
   }

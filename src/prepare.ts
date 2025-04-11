@@ -1,10 +1,9 @@
-// @ts-ignore
 import TOML from "smol-toml";
 import fs from "fs";
 import { Options } from "execa";
-import { normalizeVersion, spawn } from "./utils.ts";
-import { DefaultConfig } from "./default-options.ts";
-import { PluginConfig } from "./types.ts";
+import { normalizeVersion, spawn } from "./utils";
+import { DefaultConfig } from "./default-options";
+import { PluginConfig } from "./types";
 import { PrepareContext } from "semantic-release";
 
 async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
@@ -15,7 +14,7 @@ async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
     throw new Error("nextRelease is undefined");
   }
 
-  let execaOptions: Options = {
+  const execaOptions: Options = {
     stdout: context.stdout,
     stderr: context.stderr,
   };
@@ -29,7 +28,8 @@ async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
   });
   const pyproject = TOML.parse(toml);
 
-  pyproject["project"]["version"] = version;
+  (pyproject.project as { version: string }).version = version;
+
 
   fs.writeFileSync(pyprojectPath, TOML.stringify(pyproject), {
     encoding: "utf8",
@@ -37,10 +37,10 @@ async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
   });
 
   logger.log(`Locking dependencies`);
-  await spawn("uv", ["lock"], execaOptions);
+  await spawn("uv", execaOptions, ["lock"]);
 
   logger.log(`Building distribution in ${distDir}`);
-  await spawn("uv", ["build", distDir], execaOptions);
+  await spawn("uv", execaOptions, ["build", distDir]);
 }
 
 export { prepare };
