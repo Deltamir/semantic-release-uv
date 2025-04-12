@@ -1,3 +1,10 @@
+## [1.1.9](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.8...1.1.9) (2025-04-12)
+
+
+### Bug Fixes
+
+* YAT ([dab2562](https://gitlab.com/open-resources/semantic-release-uv/commit/dab25627f77ccd92bdc86ae257f40c8726d893de))
+
 ## [1.1.8](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.7...1.1.8) (2025-04-12)
 
 
