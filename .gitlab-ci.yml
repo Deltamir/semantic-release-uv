@@ -111,9 +111,9 @@ rebase-beta:
   stage: deploy
   variables:
     # Hopefully migrate one day to Project Access Token
-    REPO: "https://${GITLAB_USER_NAME}:${GL_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
+    REPO: "https://${GITLAB_USER_LOGIN}:${GL_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
   script:
-    - echo "${GITLAB_USER_NAME}"
+    - echo "${GITLAB_USER_LOGIN}"
     - echo "${GITLAB_USER_EMAIL}"
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
