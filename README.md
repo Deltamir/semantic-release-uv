@@ -2,7 +2,6 @@
 
 A [semantic-release](https://semantic-release.gitbook.io/semantic-release/) plugin to publish Python packages built with [`uv`](https://github.com/astral-sh/uv).\
 ![NPM Version](https://img.shields.io/npm/v/%40open_resources%2Fsemantic-release-uv?logo=npm&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40open_resources%2Fsemantic-release-uv)
-![GitLab Release](https://img.shields.io/gitlab/v/release/open-resources%2Fsemantic-release-uv?logo=gitlab&label=Latest%20Release&link=https%3A%2F%2Fgitlab.com%2Fopen-resources%2Fsemantic-release-uv%2F-%2Freleases%2Fpermalink%2Flatest)
 ![Gitlab Pipeline Status](https://img.shields.io/gitlab/pipeline-status/open-resources%2Fsemantic-release-uv?logo=gitlab&link=https%3A%2F%2Fgitlab.com%2Fopen-resources%2Fsemantic-release-uv%2F-%2Fpipelines)\
 ![Semantic Release](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)
 ![Gitlab Code Coverage](https://img.shields.io/gitlab/pipeline-coverage/open-resources%2Fsemantic-release-uv?branch=main&logo=vitest&link=https%3A%2F%2Fgitlab.com%2Fopen-resources%2Fsemantic-release-uv%2F-%2Fgraphs%2Fmain%2Fcharts)

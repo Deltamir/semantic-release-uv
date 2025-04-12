@@ -19,37 +19,39 @@ module.exports = {
     "@semantic-release/release-notes-generator",
     ...(branch_name === "main" ? ["@semantic-release/changelog"] : []),
     "@semantic-release/npm",
-    [
-      "@semantic-release/gitlab",
-      {
-        assets: [
+    ...(branch_name === "main"
+      ? [
+          "@semantic-release/gitlab",
           {
-            path: "report/node-sbom.cyclonedx.json",
-            label: "Software Bill Of Material",
+            assets: [
+              {
+                path: "report/node-sbom.cyclonedx.json",
+                label: "Software Bill Of Material",
+              },
+              {
+                path: "report/node-lint.gitlab.json",
+                label: "Code Quality Report",
+              },
+              {
+                path: "report/node-audit.json",
+                label: "NPM audit Report",
+              },
+              {
+                path: "report/cobertura-coverage.xml",
+                label: "Code Coverage Report",
+              },
+              {
+                path: "report/junit.xml",
+                label: "Test Report",
+              },
+              {
+                url: project_url + "/-/blob/${nextRelease.version}/README.md",
+                label: "Documentation",
+              },
+            ],
           },
-          {
-            path: "report/node-lint.gitlab.json",
-            label: "Code Quality Report",
-          },
-          {
-            path: "report/node-audit.json",
-            label: "NPM audit Report",
-          },
-          {
-            path: "report/cobertura-coverage.xml",
-            label: "Code Coverage Report",
-          },
-          {
-            path: "report/junit.xml",
-            label: "Test Report",
-          },
-          {
-            url: project_url + "/-/blob/${nextRelease.version}/README.md",
-            label: "Documentation",
-          },
-        ],
-      },
-    ],
+        ]
+      : []),
     [
       "@semantic-release/git",
       {
