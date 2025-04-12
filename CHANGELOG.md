@@ -1,3 +1,10 @@
+## [1.1.4](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.3...1.1.4) (2025-04-12)
+
+
+### Bug Fixes
+
+* Adding a tag rule workflow to allow tag evaluation ([0e29b6d](https://gitlab.com/open-resources/semantic-release-uv/commit/0e29b6df42e4d81a8d74684f02ead4aca7e9ba74))
+
 ## [1.1.3](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.2...1.1.3) (2025-04-11)
 
 
