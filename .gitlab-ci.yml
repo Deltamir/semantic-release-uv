@@ -105,15 +105,18 @@ node-deploy:
     - if: $CI_COMMIT_BRANCH == "beta"
 
 rebase-beta:
-  image: alpine:3.21.3
+  image:
+    name: alpine/git:latest
+    entrypoint: [""]
   stage: deploy
+  variables:
+    REPO: "https://gitlab-ci-token:${GL_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
   script:
-    - apk add git
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
-    - git clone "https://${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git" clone
+    - git clone "${REPO}" clone
     - cd clone
-    - git remote set-url --push origin "https://gitlab-ci-token:${GL_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
+    - git remote set-url --push origin "${REPO}"
     - git remote update
     - git fetch origin
     - git checkout beta
