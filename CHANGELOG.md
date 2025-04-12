@@ -1,3 +1,10 @@
+## [1.1.5](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.4...1.1.5) (2025-04-12)
+
+
+### Bug Fixes
+
+* Moving tag evaluation on top ([dc853ad](https://gitlab.com/open-resources/semantic-release-uv/commit/dc853ad720d8905ad02aee3f4c4b058e8dbd07c8))
+
 ## [1.1.4](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.3...1.1.4) (2025-04-12)
 
 
