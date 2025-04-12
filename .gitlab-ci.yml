@@ -110,14 +110,14 @@ rebase-beta:
     entrypoint: [""]
   stage: deploy
   variables:
-    REPO: "https://gitlab-ci-token:${GL_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
+    # Hopefully migrate one day to Project Access Token
+    REPO: "https://${GITLAB_USER_NAME}:${GL_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
   script:
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
-    - git clone "${REPO}" clone
-    - cd clone
-    - git remote set-url --push origin "${REPO}"
-    - git remote update
+    - git remote set-url origin "$REPO"
+    # - git clone "${REPO}" clone
+    # - cd clone
     - git fetch origin
     - git checkout beta
     - git rebase origin/main
