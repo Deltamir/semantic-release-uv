@@ -105,9 +105,10 @@ node-deploy:
     - if: $CI_COMMIT_BRANCH == "beta"
 
 rebase-beta:
-  image: debian:latest
+  image: alpine:3.21.3
   stage: deploy
   script:
+    - apk add git
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
     - git clone "https://${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git" clone
