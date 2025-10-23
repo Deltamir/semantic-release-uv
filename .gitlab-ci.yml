@@ -6,7 +6,7 @@
 
 .alpine:
   image:
-    name: alpine/git:3.22.2
+    name: alpine/git:2.49.1
     entrypoint: [""]
 
 workflow:
