@@ -97,6 +97,7 @@ node-deploy:
   stage: deploy
   before_script:
     - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
+    - git remote set-url origin https://gitlab.com/${CI_PROJECT_PATH}.git # Needed while waiting for https://github.com/semantic-release/gitlab/issues/891 to be fixed
     - npm install -g semantic-release conventional-changelog-conventionalcommits @semantic-release/gitlab @semantic-release/changelog @semantic-release/git
   script:
     - semantic-release
@@ -110,19 +111,14 @@ rebase-beta:
     entrypoint: [""]
   stage: deploy
   variables:
-    # Hopefully migrate one day to Project Access Token
-    REPO: "https://${GITLAB_USER_LOGIN}:${GL_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
+    REPO: "https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
   script:
-    - echo "${GITLAB_USER_LOGIN}"
-    - echo "${GITLAB_USER_EMAIL}"
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
-    - git clone "${REPO}" clone
-    - cd clone
     - git remote set-url origin "$REPO"
     - git fetch origin
     - git checkout beta
     - git rebase origin/main
-    - git push origin beta -v
+    - git push origin beta
   rules:
     - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
