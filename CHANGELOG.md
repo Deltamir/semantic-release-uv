@@ -1,3 +1,10 @@
+## [1.1.17](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.16...1.1.17) (2025-10-23)
+
+
+### Bug Fixes
+
+* Test with reset ([c6cbe09](https://gitlab.com/open-resources/semantic-release-uv/commit/c6cbe09994880edad903d4f5338e1ad8ddb231d9))
+
 ## [1.1.14](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.13...1.1.14) (2025-04-12)
 
 
