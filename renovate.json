@@ -36,13 +36,13 @@
       "matchUpdateTypes": [
         "major"
       ],
-      "automerge": true,
+      "automerge": false,
       "commitMessageSuffix": "(MAJOR)",
       "semanticCommitType": "feat",
       "addLabels": [
         "manual"
       ],
-      "assignees": [
+      "reviewers": [
         "Deltamir"
       ]
     }
