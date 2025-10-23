@@ -7,15 +7,15 @@
   "labels": [
     "dependencies"
   ],
-  "baseBranches": [
+  "baseBranchPatterns": [
     "beta"
   ],
   "pre-commit": {
     "enabled": true
   },
   "gitlabci": {
-    "fileMatch": [
-      ".gitlab-ci.yml"
+    "managerFilePatterns": [
+      "/.gitlab-ci.yml/"
     ]
   },
   "packageRules": [
