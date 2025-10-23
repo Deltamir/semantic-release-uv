@@ -40,7 +40,10 @@
       "commitMessageSuffix": "(MAJOR)",
       "semanticCommitType": "feat",
       "addLabels": [
-        "automerge"
+        "manual"
+      ],
+      "assignees": [
+        "Deltamir"
       ]
     }
   ]
