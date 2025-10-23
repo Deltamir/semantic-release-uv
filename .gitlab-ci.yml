@@ -4,6 +4,11 @@
     - npm install -g corepack
     - yarn install  --immutable
 
+.alpine:
+  image:
+    name: alpine/git:3.22.2
+    entrypoint: [""]
+
 workflow:
   rules:
     - if: '$CI_COMMIT_MESSAGE =~ "/\[(ci skip|skip ci) on ([^],]*,)*beta(,[^],]*)*\]/" && $CI_COMMIT_BRANCH == "beta"'
@@ -106,9 +111,7 @@ node-deploy:
     - if: $CI_COMMIT_BRANCH == "beta"
 
 rebase-beta:
-  image:
-    name: alpine/git:latest
-    entrypoint: [""]
+  extends: .alpine
   stage: deploy
   variables:
     REPO: "https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
