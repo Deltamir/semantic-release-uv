@@ -1163,7 +1163,7 @@ __metadata:
     c8: "npm:^10.1.3"
     eslint: "npm:^9.24.0"
     eslint-config-prettier: "npm:^10.1.2"
-    eslint-formatter-gitlab: "npm:^5.1.0"
+    eslint-formatter-gitlab: "npm:^6.0.0"
     execa: "npm:^9.5.2"
     form-data: "npm:^4.0.2"
     globals: "npm:^16.0.0"
@@ -2518,6 +2518,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"codeclimate-types@npm:^0.3.0":
+  version: 0.3.1
+  resolution: "codeclimate-types@npm:0.3.1"
+  checksum: 10c0/cd214f791516494c61173edc5d8a45522b46b21e2f210bb3377a4671c1964be3d5787861c7c0804d45d1738424a1968beb3ddb684207886e159c442443cbb42c
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^1.9.0":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
@@ -3086,15 +3093,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-formatter-gitlab@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "eslint-formatter-gitlab@npm:5.1.0"
+"eslint-formatter-codeclimate@npm:^1.0.0":
+  version: 1.0.2
+  resolution: "eslint-formatter-codeclimate@npm:1.0.2"
   dependencies:
-    chalk: "npm:^4.0.0"
+    codeclimate-types: "npm:^0.3.0"
+  peerDependencies:
+    eslint: ^9.0.0
+  checksum: 10c0/f9ed809484a5880a067fc644ec7e68eb006480da2c16d817f18bbfc4dcd3761f9da0518a4c9022222735d5183799c56dbfbeb772eb7e39547b3ed74f457550b2
+  languageName: node
+  linkType: hard
+
+"eslint-formatter-gitlab@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "eslint-formatter-gitlab@npm:6.0.1"
+  dependencies:
+    eslint-formatter-codeclimate: "npm:^1.0.0"
     yaml: "npm:^2.0.0"
   peerDependencies:
-    eslint: ">=5"
-  checksum: 10c0/4e8ba861ceaa83bd2018f3571f1d12d51a200669cee5ae9501177e0af7bc3ae1d530266abe9e9729c14abf7b2cf7a16505b0990c19f2e1f080d7e1184c5c1c64
+    eslint: ">=9"
+  checksum: 10c0/2e7cb6a9bedf45badd79fa3ddc489ebe4552765873a2cc06eab948cce615c1240e36d7ab6fe840b6473b062ff4bb2dc71c3daa36f2aa4cd313e8014d0bc731fa
   languageName: node
   linkType: hard
 
