@@ -97,6 +97,7 @@ node-deploy:
   stage: deploy
   before_script:
     - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
+    - git remote set-url origin https://gitlab.com/${CI_PROJECT_PATH}.git # Needed while waiting for https://github.com/semantic-release/gitlab/issues/891 to be fixed
     - npm install -g semantic-release conventional-changelog-conventionalcommits @semantic-release/gitlab @semantic-release/changelog @semantic-release/git
   script:
     - semantic-release
