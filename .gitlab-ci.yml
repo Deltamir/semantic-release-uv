@@ -110,19 +110,14 @@ rebase-beta:
     entrypoint: [""]
   stage: deploy
   variables:
-    # Hopefully migrate one day to Project Access Token
-    REPO: "https://${GITLAB_USER_LOGIN}:${GL_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
+    REPO: "https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
   script:
-    - echo "${GITLAB_USER_LOGIN}"
-    - echo "${GITLAB_USER_EMAIL}"
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
-    - git clone "${REPO}" clone
-    - cd clone
     - git remote set-url origin "$REPO"
     - git fetch origin
     - git checkout beta
     - git rebase origin/main
-    - git push origin beta -v
+    - git push origin beta
   rules:
     - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
