@@ -37,7 +37,7 @@ describe("verify function", () => {
     const pluginConfig = {};
 
     await expect(verify(pluginConfig, context)).rejects.toThrow(
-      "Response code 403 (Forbidden)"
+      "Request failed with status code 403 (Forbidden): POST http://pypi.mockup.com/403"
     );
   });
 
@@ -95,7 +95,7 @@ describe("verify function", () => {
     await expect(verify(pluginConfig, context)).resolves.not.toThrow();
   });
 
-  
+
   it("should verify authentication without failure even if code is not 403", async () => {
     process.env["PYPI_REPO_URL"] += "/404";
     const context = { logger: { log: vi.fn() } } as VerifyConditionsContext;
