@@ -1,3 +1,48 @@
+# [1.2.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.17...1.2.0) (2025-11-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @mswjs/interceptors to ^0.40.0 ([56269b4](https://gitlab.com/open-resources/semantic-release-uv/commit/56269b467b3bda76c878479a6075a0ae98fad94d))
+* **deps:** update dependency @types/node to v22.18.12 ([ba2ac2c](https://gitlab.com/open-resources/semantic-release-uv/commit/ba2ac2cf320f31a7ee13ace5f6341aca87b4cffe))
+* **deps:** update dependency @types/node to v22.18.13 ([9f2580b](https://gitlab.com/open-resources/semantic-release-uv/commit/9f2580b3be46c8322647c1b13121ee710d1bd6ff))
+* **deps:** update dependency @types/node to v22.19.0 ([a9f649e](https://gitlab.com/open-resources/semantic-release-uv/commit/a9f649e5c47d85b24b4def6a90fc9aad7fdaea03))
+* **deps:** update dependency eslint-config-prettier to v10.1.8 ([fa02c7a](https://gitlab.com/open-resources/semantic-release-uv/commit/fa02c7ac504b2735e275c4f929a6c05f7afae4d1))
+* **deps:** update dependency execa to v9.6.0 ([ab4ef81](https://gitlab.com/open-resources/semantic-release-uv/commit/ab4ef8171045328c8721987fce233232bc6f85cd))
+* **deps:** update dependency form-data to v4.0.4 ([1623adb](https://gitlab.com/open-resources/semantic-release-uv/commit/1623adb719538f67f7cde1c4a370026a9af80165))
+* **deps:** update dependency globals to v16.4.0 ([f4042f4](https://gitlab.com/open-resources/semantic-release-uv/commit/f4042f48f3e47753ed5ec901a8c1470a0137d1ac))
+* **deps:** update dependency globals to v16.5.0 ([fb703fa](https://gitlab.com/open-resources/semantic-release-uv/commit/fb703fa800e3054cb5226ec75b6bb85303f97eba))
+* **deps:** update dependency got to v14.6.0 ([cef3a5c](https://gitlab.com/open-resources/semantic-release-uv/commit/cef3a5c46708615b15914afca0d036e534d3fe86))
+* **deps:** update dependency got to v14.6.2 ([179f34e](https://gitlab.com/open-resources/semantic-release-uv/commit/179f34e1e151dcc3bf631ab03fc12d9eb1aae616))
+* **deps:** update dependency memfs to v4.49.0 ([0624170](https://gitlab.com/open-resources/semantic-release-uv/commit/0624170826649293ca56ed04368e56988b23d658))
+* **deps:** update dependency memfs to v4.50.0 ([f12bda7](https://gitlab.com/open-resources/semantic-release-uv/commit/f12bda7edc406fcb6196210fee8feb7f39b8fd93))
+* **deps:** update dependency msw to v2.11.6 ([f9dac83](https://gitlab.com/open-resources/semantic-release-uv/commit/f9dac8380850806e8a89e0b500c4f08ff6ea68ae))
+* **deps:** update dependency prettier to v3.6.2 ([38c46a0](https://gitlab.com/open-resources/semantic-release-uv/commit/38c46a0f832c89ee01b7d2cd89ca945baf5824f5))
+* **deps:** update dependency semantic-release to v24.2.9 ([7153d8d](https://gitlab.com/open-resources/semantic-release-uv/commit/7153d8de464aacf0f5b6b4a606827adbc0bb4d19))
+* **deps:** update dependency smol-toml to v1.4.2 ([46627b7](https://gitlab.com/open-resources/semantic-release-uv/commit/46627b79d439f7f9ab5b48eb5e6c7e4d51317ffe))
+* **deps:** update dependency typescript to v5.9.3 ([e70253a](https://gitlab.com/open-resources/semantic-release-uv/commit/e70253a6fb701c996ab253e83f72097fc3c5e99e))
+* **deps:** update dependency typescript-eslint to v8.46.2 ([3f041b3](https://gitlab.com/open-resources/semantic-release-uv/commit/3f041b30b8cc0a3fa365bbf3532f9385f2c38dee))
+* **deps:** update dependency typescript-eslint to v8.46.3 ([e598c98](https://gitlab.com/open-resources/semantic-release-uv/commit/e598c985e27a4aac5fb61c3e7a6414a0bcb1bff0))
+* **deps:** update eslint monorepo to v9.38.0 ([84fa1c1](https://gitlab.com/open-resources/semantic-release-uv/commit/84fa1c1b2171b695360990d97d928ff018efe4c5))
+* **deps:** update eslint monorepo to v9.39.0 ([274e0a7](https://gitlab.com/open-resources/semantic-release-uv/commit/274e0a739b986ee840fd70b7a9af6cf4b7b8288d))
+* **deps:** update eslint monorepo to v9.39.1 ([6eb8876](https://gitlab.com/open-resources/semantic-release-uv/commit/6eb88768086f67cdc4c2b5d37030b4f3c19aa5f7))
+* **deps:** update node.js to v22.21.0 ([544cab7](https://gitlab.com/open-resources/semantic-release-uv/commit/544cab74dc08b0d6fbf007cf8868b74e67651f94))
+* **deps:** update node.js to v22.21.1 ([412c606](https://gitlab.com/open-resources/semantic-release-uv/commit/412c606d87920953c67b22a4f7f51d34e9a71330))
+* **deps:** update pre-commit hook commitizen-tools/commitizen to v4.9.1 ([d135292](https://gitlab.com/open-resources/semantic-release-uv/commit/d1352926b1257bf4ae9d0b313a63981c51d0fa6e))
+* **deps:** update pre-commit hook gitleaks/gitleaks to v8.28.0 ([4ce64b5](https://gitlab.com/open-resources/semantic-release-uv/commit/4ce64b51b665dd6697720b38578c47892a3c5080))
+* **deps:** update vitest monorepo to v3.2.4 ([3e2d1a7](https://gitlab.com/open-resources/semantic-release-uv/commit/3e2d1a79f6f06546ef12891204bd7fec331a7974))
+* **deps:** update yarn to v4.10.3 ([6e8823c](https://gitlab.com/open-resources/semantic-release-uv/commit/6e8823cb56cb756928856e01938882f6bb883909))
+
+
+### Features
+
+* **deps:** update dependency eslint-formatter-gitlab to v6 (major) ([640ff4c](https://gitlab.com/open-resources/semantic-release-uv/commit/640ff4ce7a4a502165c4e34661d7174e78858944))
+* **deps:** update dependency semantic-release to v25 (major) ([73f4b9a](https://gitlab.com/open-resources/semantic-release-uv/commit/73f4b9ac299839d46e45ac3f647ca763ff0f4c80))
+* **deps:** update mcr.microsoft.com/devcontainers/javascript-node docker tag to v4 (major) ([e629d67](https://gitlab.com/open-resources/semantic-release-uv/commit/e629d675858019b09df367afbcf41d0dce8290fd))
+* **deps:** update node.js to v24 (major) ([81c744d](https://gitlab.com/open-resources/semantic-release-uv/commit/81c744d350bb8705dfc592df663ebecbe7ce85f3))
+* **deps:** update pre-commit hook pre-commit/pre-commit-hooks to v6 (major) ([d0477c7](https://gitlab.com/open-resources/semantic-release-uv/commit/d0477c72e7253b717425c2e51903332c7831f338))
+* **deps:** update vitest monorepo to v4 (major) ([af64ff0](https://gitlab.com/open-resources/semantic-release-uv/commit/af64ff07d2cb13d96e88f68febedc9b4f53d3e45))
+
 ## [1.1.17](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.16...1.1.17) (2025-10-23)
 
 
