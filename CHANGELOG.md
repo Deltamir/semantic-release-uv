@@ -1,3 +1,10 @@
+## [1.2.1](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.0...1.2.1) (2025-11-05)
+
+
+### Bug Fixes
+
+* Removes obsolete changelog history for clarity ([efaa7f5](https://gitlab.com/open-resources/semantic-release-uv/commit/efaa7f56c79f487d9accd86cf007bcd68a191ac3))
+
 # [1.2.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.1.17...1.2.0) (2025-11-03)
 
 
