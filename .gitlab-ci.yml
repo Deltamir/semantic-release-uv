@@ -10,7 +10,7 @@
     entrypoint: [""]
 
 .devcontainers:
-  image: docer:28.5.1-cli
+  image: docker:28.5.1-cli
   services:
     - name: docker:28.5.1-dind
   before_script:
