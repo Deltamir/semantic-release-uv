@@ -21,35 +21,37 @@ module.exports = {
     "@semantic-release/npm",
     ...(branch_name === "main"
       ? [
-          "@semantic-release/gitlab",
-          {
-            assets: [
-              {
-                path: "report/node-sbom.cyclonedx.json",
-                label: "Software Bill Of Material",
-              },
-              {
-                path: "report/node-lint.gitlab.json",
-                label: "Code Quality Report",
-              },
-              {
-                path: "report/node-audit.json",
-                label: "NPM audit Report",
-              },
-              {
-                path: "report/cobertura-coverage.xml",
-                label: "Code Coverage Report",
-              },
-              {
-                path: "report/junit.xml",
-                label: "Test Report",
-              },
-              {
-                url: project_url + "/-/blob/${nextRelease.version}/README.md",
-                label: "Documentation",
-              },
-            ],
-          },
+          [
+            "@semantic-release/gitlab",
+            {
+              assets: [
+                {
+                  path: "report/node-sbom.cyclonedx.json",
+                  label: "Software Bill Of Material",
+                },
+                {
+                  path: "report/node-lint.gitlab.json",
+                  label: "Code Quality Report",
+                },
+                {
+                  path: "report/node-audit.json",
+                  label: "NPM audit Report",
+                },
+                {
+                  path: "report/cobertura-coverage.xml",
+                  label: "Code Coverage Report",
+                },
+                {
+                  path: "report/junit.xml",
+                  label: "Test Report",
+                },
+                {
+                  url: project_url + "/-/blob/${nextRelease.version}/README.md",
+                  label: "Documentation",
+                },
+              ],
+            },
+          ],
         ]
       : []),
     [
