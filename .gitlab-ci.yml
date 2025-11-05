@@ -18,8 +18,6 @@
    - npm install -g @devcontainers/cli
    - docker info
    - devcontainer --version
-  after_script:
-    - devcontainer down --workspace-folder . || true
   tags:
     - gitlab-org-docker
 
@@ -146,3 +144,7 @@ devcontainers-test:
   script:
     - devcontainer build --workspace-folder .
     - devcontainer up --workspace-folder . --id-label "ci=$CI_PIPELINE_ID" --remove-existing-container --skip-post-attach
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - .devcontainer/**/*
