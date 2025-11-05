@@ -1,4 +1,3 @@
-// @ts-expect-error No types for MSW
 import { http, HttpResponse } from "msw";
 import { afterAll, afterEach, beforeAll } from "vitest";
 import { setupServer } from "msw/node";
@@ -24,7 +23,6 @@ export const restHandlers = [
       { status: 404 }
     );
   }),
-  // @ts-expect-error No types for MSW Requests
   http.post("https://upload.pypi.org/legacy/", (request) => {
     const autho = request.request.headers.get("authorization");
     return HttpResponse.text(autho);

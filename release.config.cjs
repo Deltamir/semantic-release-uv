@@ -46,6 +46,10 @@ module.exports = {
                   label: "Test Report",
                 },
                 {
+                  path: "gl-sast-report.json",
+                  label: "SAST Report",
+                },
+                {
                   url: project_url + "/-/blob/${nextRelease.version}/README.md",
                   label: "Documentation",
                 },
