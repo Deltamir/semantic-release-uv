@@ -145,4 +145,4 @@ devcontainers-test:
   stage: build
   script:
     - devcontainer build --workspace-folder .
-    - devcontainer up --workspace-folder . --id-label "ci=$CI_PIPELINE_ID" --remove-existing-container
+    - devcontainer up --workspace-folder . --id-label "ci=$CI_PIPELINE_ID" --remove-existing-container --skip-post-attach
