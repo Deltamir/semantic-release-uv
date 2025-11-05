@@ -17,9 +17,9 @@
    - apk add --no-cache npm
    - npm install -g @devcontainers/cli
    - docker info
-   - devcontainers --version
+   - devcontainer --version
   after_script:
-    - devcontainers down --workspace-folder . || true
+    - devcontainer down --workspace-folder . || true
   tags:
     - gitlab-org-docker
 
@@ -144,5 +144,5 @@ devcontainers-test:
   extends: .devcontainers
   stage: build
   script:
-    - devcontainers build --workspace-folder .
+    - devcontainer build --workspace-folder .
     - devcontainer up --workspace-folder . --id-label "ci=$CI_PIPELINE_ID" --remove-existing-container
