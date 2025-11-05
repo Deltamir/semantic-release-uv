@@ -79,7 +79,22 @@ Note that this plugin modifies the version inside of `pyproject.toml` and potent
 
 ## Development
 
-TODO
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development setup and guidelines.
+
+Quick start:
+
+1. Open in VS Code's devcontainer (recommended)
+2. Install dependencies: `yarn install`
+3. Run tests: `yarn test`
+4. Check coverage (required 100%): `yarn coverage`
+
+Key requirements:
+
+- Node.js ≥ 18
+- All changes must target the `beta` branch
+- 100% test coverage is mandatory
+- Commits follow [Conventional Commits](https://conventionalcommits.org/)
+- Pre-commit hooks must pass (auto-configured in devcontainer)
 
 ## License
 
