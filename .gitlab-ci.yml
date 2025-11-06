@@ -10,9 +10,9 @@
     entrypoint: [""]
 
 .devcontainers:
-  image: docker:28.5.1-cli
+  image: docker:28.5.2-cli
   services:
-    - name: docker:28.5.1-dind
+    - name: docker:28.5.2-dind
   before_script:
    - apk add --no-cache npm
    - npm install -g @devcontainers/cli
