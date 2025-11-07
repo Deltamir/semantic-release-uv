@@ -1,25 +1,17 @@
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
+  - component: $CI_SERVER_FQDN/open-resources/cicd-components/devcontainers/devcontainers@1.1.0
+  - component: $CI_SERVER_FQDN/open-resources/cicd-components/semantic-release/semantic-release@1.0.2
+
 .node:
   image: node:24.11.0
   before_script:
     - npm install -g corepack
     - yarn install  --immutable
-
-.alpine:
-  image:
-    name: alpine/git:2.49.1
-    entrypoint: [""]
-
-include:
-  - template: Jobs/SAST.gitlab-ci.yml
-  - component: $CI_SERVER_FQDN/open-resources/cicd-components/devcontainers/devcontainers@1.0.1
-
-workflow:
   rules:
-    - if: '$CI_COMMIT_MESSAGE =~ "/\[(ci skip|skip ci) on ([^],]*,)*beta(,[^],]*)*\]/" && $CI_COMMIT_BRANCH == "beta"'
-      when: never
-    - if: '$CI_COMMIT_MESSAGE =~ "/\[(ci skip|skip ci) on ([^],]*,)*main(,[^],]*)*\]/" && $CI_COMMIT_BRANCH == "main"'
-      when: never
-    - when: always
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "beta"
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 node-lint:
   extends: .node
@@ -37,10 +29,6 @@ node-lint:
     reports:
       codequality:
         - report/node-lint.gitlab.json
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
 
 node-audit:
   extends: .node
@@ -53,10 +41,7 @@ node-audit:
     expire_in: 1 day
     paths:
       - report/node-audit.json
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
+
 
 node-test:
   extends: .node
@@ -77,10 +62,7 @@ node-test:
       - report/cobertura-coverage.xml
       - report/junit.xml
   coverage: /Statements\s*:\s*([^%]+)/
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
 
 node-sbom:
   extends: .node
@@ -96,36 +78,3 @@ node-sbom:
     reports:
       cyclonedx:
         - report/node-sbom.cyclonedx.json
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-
-node-deploy:
-  extends: .node
-  stage: deploy
-  before_script:
-    - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
-    - git remote set-url origin https://gitlab.com/${CI_PROJECT_PATH}.git # Needed while waiting for https://github.com/semantic-release/gitlab/issues/891 to be fixed
-    - npm install -g semantic-release conventional-changelog-conventionalcommits @semantic-release/gitlab @semantic-release/changelog @semantic-release/git
-  script:
-    - semantic-release
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
-
-rebase-beta:
-  extends: .alpine
-  stage: deploy
-  variables:
-    REPO: "https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
-  script:
-    - git config --global user.name "${GITLAB_USER_NAME}"
-    - git config --global user.email "${GITLAB_USER_EMAIL}"
-    - git remote set-url origin "$REPO"
-    - git fetch origin main beta
-    - git checkout beta
-    - git reset --hard origin/main
-    - git push origin beta --force
-  rules:
-    - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
