@@ -6,7 +6,7 @@
 
 include:
   - template: Jobs/SAST.gitlab-ci.yml
-  - component: $CI_SERVER_FQDN/open-resources/cicd-components/devcontainers/devcontainers@1.0.1
+  - component: $CI_SERVER_FQDN/open-resources/cicd-components/devcontainers/devcontainers@1.1.0
   - component: $CI_SERVER_FQDN/open-resources/cicd-components/semantic-release/semantic-release@1.0.2
 
 
