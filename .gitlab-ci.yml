@@ -1,14 +1,17 @@
-.node:
-  image: node:24.11.0
-  before_script:
-    - npm install -g corepack
-    - yarn install  --immutable
-
 include:
   - template: Jobs/SAST.gitlab-ci.yml
   - component: $CI_SERVER_FQDN/open-resources/cicd-components/devcontainers/devcontainers@1.1.0
   - component: $CI_SERVER_FQDN/open-resources/cicd-components/semantic-release/semantic-release@1.0.2
 
+.node:
+  image: node:24.11.0
+  before_script:
+    - npm install -g corepack
+    - yarn install  --immutable
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "beta"
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 node-lint:
   extends: .node
@@ -26,10 +29,6 @@ node-lint:
     reports:
       codequality:
         - report/node-lint.gitlab.json
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
 
 node-audit:
   extends: .node
@@ -42,10 +41,7 @@ node-audit:
     expire_in: 1 day
     paths:
       - report/node-audit.json
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
+
 
 node-test:
   extends: .node
@@ -66,10 +62,7 @@ node-test:
       - report/cobertura-coverage.xml
       - report/junit.xml
   coverage: /Statements\s*:\s*([^%]+)/
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
 
 node-sbom:
   extends: .node
@@ -85,7 +78,3 @@ node-sbom:
     reports:
       cyclonedx:
         - report/node-sbom.cyclonedx.json
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
