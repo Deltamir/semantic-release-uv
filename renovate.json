@@ -38,7 +38,7 @@
       ],
       "automerge": false,
       "commitMessageSuffix": "(MAJOR)",
-      "semanticCommitType": "feat",
+      "semanticCommitType": "fix",
       "addLabels": [
         "manual"
       ],
