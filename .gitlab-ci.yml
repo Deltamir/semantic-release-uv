@@ -4,22 +4,11 @@
     - npm install -g corepack
     - yarn install  --immutable
 
-.alpine:
-  image:
-    name: alpine/git:2.49.1
-    entrypoint: [""]
-
 include:
   - template: Jobs/SAST.gitlab-ci.yml
   - component: $CI_SERVER_FQDN/open-resources/cicd-components/devcontainers/devcontainers@1.0.1
+  - component: $CI_SERVER_FQDN/open-resources/cicd-components/semantic-release/semantic-release@1.0.2
 
-workflow:
-  rules:
-    - if: '$CI_COMMIT_MESSAGE =~ "/\[(ci skip|skip ci) on ([^],]*,)*beta(,[^],]*)*\]/" && $CI_COMMIT_BRANCH == "beta"'
-      when: never
-    - if: '$CI_COMMIT_MESSAGE =~ "/\[(ci skip|skip ci) on ([^],]*,)*main(,[^],]*)*\]/" && $CI_COMMIT_BRANCH == "main"'
-      when: never
-    - when: always
 
 node-lint:
   extends: .node
@@ -100,32 +89,3 @@ node-sbom:
     - if: $CI_COMMIT_BRANCH == "main"
     - if: $CI_COMMIT_BRANCH == "beta"
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-
-node-deploy:
-  extends: .node
-  stage: deploy
-  before_script:
-    - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
-    - git remote set-url origin https://gitlab.com/${CI_PROJECT_PATH}.git # Needed while waiting for https://github.com/semantic-release/gitlab/issues/891 to be fixed
-    - npm install -g semantic-release conventional-changelog-conventionalcommits @semantic-release/gitlab @semantic-release/changelog @semantic-release/git
-  script:
-    - semantic-release
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH == "beta"
-
-rebase-beta:
-  extends: .alpine
-  stage: deploy
-  variables:
-    REPO: "https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_FQDN}/${CI_PROJECT_PATH}.git"
-  script:
-    - git config --global user.name "${GITLAB_USER_NAME}"
-    - git config --global user.email "${GITLAB_USER_EMAIL}"
-    - git remote set-url origin "$REPO"
-    - git fetch origin main beta
-    - git checkout beta
-    - git reset --hard origin/main
-    - git push origin beta --force
-  rules:
-    - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
