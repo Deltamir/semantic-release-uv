@@ -1,3 +1,14 @@
+## [1.2.2](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.1...1.2.2) (2025-11-09)
+
+
+### Bug Fixes
+
+* **deps:** Bump devcontainer CICD component to 1.1.0 ([7c11b52](https://gitlab.com/open-resources/semantic-release-uv/commit/7c11b527648ca54d59de1a376184410570371995))
+* **deps:** update dependency got to v14.6.3 ([9554bc1](https://gitlab.com/open-resources/semantic-release-uv/commit/9554bc106ca0866cf8a25c4bfe96a7163a4a33bc))
+* **deps:** update dependency semantic-release to v25.0.2 ([9a210cf](https://gitlab.com/open-resources/semantic-release-uv/commit/9a210cfa1f14471b2ee98c793371aab45636873a))
+* **deps:** update docker docker tag to v28.5.2 ([3cb27a8](https://gitlab.com/open-resources/semantic-release-uv/commit/3cb27a8eb91eb14de940bc01da70b0914f627651))
+* **deps:** update vitest monorepo to v4.0.7 ([82cc11c](https://gitlab.com/open-resources/semantic-release-uv/commit/82cc11c414985518e6f5812ad861c7b304fbd63e))
+
 ## [1.2.1](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.0...1.2.1) (2025-11-05)
 
 
