@@ -31,7 +31,7 @@ async function publish(pluginConfig: PluginConfig, context: PublishContext) {
     repo,
     "--username",
     username,
-    "--token",
+    "--password",
     token as string,
   ]);
 }

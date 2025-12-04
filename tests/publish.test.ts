@@ -48,7 +48,7 @@ describe("publish function", () => {
         "http://pypi.mockup.com",
         "--username",
         "user",
-        "--token",
+        "--password",
         "token",
       ]
     );
