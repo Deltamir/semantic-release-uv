@@ -1,7 +1,11 @@
 {
   "name": "@open_resources/semantic-release-uv",
   "version": "1.2.3-rc.3",
-  "main": "src/index.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
   "repository": "https://gitlab.com/open-resources/semantic-release-uv.git",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -44,7 +48,8 @@
     "lint:fix": "yarn lint:prettier:fix && yarn lint:eslint:fix",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prepack": "yarn build"
   },
   "packageManager": "yarn@4.10.3"
 }
