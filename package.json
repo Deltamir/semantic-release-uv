@@ -48,8 +48,7 @@
     "lint:fix": "yarn lint:prettier:fix && yarn lint:eslint:fix",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "build": "tsc",
-    "prepack": "tsc"
+    "build": "tsc"
   },
   "packageManager": "yarn@4.12.0"
 }
