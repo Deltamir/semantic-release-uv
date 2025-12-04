@@ -48,8 +48,8 @@
     "lint:fix": "yarn lint:prettier:fix && yarn lint:eslint:fix",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "build": "tsc -p tsconfig.json",
-    "prepack": "yarn build"
+    "build": "tsc",
+    "prepack": "tsc"
   },
   "packageManager": "yarn@4.10.3"
 }
