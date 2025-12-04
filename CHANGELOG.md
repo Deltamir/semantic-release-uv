@@ -1,3 +1,32 @@
+## [1.2.3](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.2...1.2.3) (2025-12-04)
+
+
+### Bug Fixes
+
+* Add a prepack script ([77cf40f](https://gitlab.com/open-resources/semantic-release-uv/commit/77cf40f0cbe16e17f40d194389ebdadcde9a0a2e))
+* Bump yarn component to 1.0.3 ([77b7c91](https://gitlab.com/open-resources/semantic-release-uv/commit/77b7c912246389f37b35300208fad7f6601c0ba3))
+* **deps:** update dependency @types/node to v24.10.1 ([c71619a](https://gitlab.com/open-resources/semantic-release-uv/commit/c71619a4693b7e576924af3a968512be48dd6e95))
+* **deps:** update dependency eslint-formatter-gitlab to v7 (major) ([864431b](https://gitlab.com/open-resources/semantic-release-uv/commit/864431b6f45eaf7ffd955da34c7bba41f834326f))
+* **deps:** update dependency execa to v9.6.1 ([6273322](https://gitlab.com/open-resources/semantic-release-uv/commit/62733222cf1b2cd8b681a148b5ff437eaa34eca1))
+* **deps:** update dependency form-data to v4.0.5 ([abdc19e](https://gitlab.com/open-resources/semantic-release-uv/commit/abdc19e70fcdc44a2b9b037a039154d5bfe1de20))
+* **deps:** update dependency got to v14.6.4 ([4b9df8f](https://gitlab.com/open-resources/semantic-release-uv/commit/4b9df8f29d7f3854d44d21d27b8171fbcb4b1a2a))
+* **deps:** update dependency got to v14.6.5 ([3290fb7](https://gitlab.com/open-resources/semantic-release-uv/commit/3290fb7375749464be0569890b71823f82452587))
+* **deps:** update dependency memfs to v4.51.1 ([4bd94c4](https://gitlab.com/open-resources/semantic-release-uv/commit/4bd94c40d38b7c2d0210a14fba21db2f5a6f7443))
+* **deps:** update dependency msw to v2.12.4 ([88c3f8f](https://gitlab.com/open-resources/semantic-release-uv/commit/88c3f8f2719627904686c376bb60aa3ff37896e9))
+* **deps:** update dependency prettier to v3.7.4 ([63122f1](https://gitlab.com/open-resources/semantic-release-uv/commit/63122f103d737209a2a9216b68de3ba65a1fc9e8))
+* **deps:** update dependency smol-toml to v1.5.2 ([4b3e96a](https://gitlab.com/open-resources/semantic-release-uv/commit/4b3e96a3a2a89a4c17ea63a9f3ab0c8c7565f99e))
+* **deps:** update dependency typescript-eslint to v8.48.1 ([0944111](https://gitlab.com/open-resources/semantic-release-uv/commit/09441111e632871d45ddb32af098a81ba4332fc5))
+* **deps:** update pre-commit hook commitizen-tools/commitizen to v4.10.0 ([6bac084](https://gitlab.com/open-resources/semantic-release-uv/commit/6bac084d9699c70e7f128b3c18025bd8987df89c))
+* **deps:** update pre-commit hook gitleaks/gitleaks to v8.30.0 ([4afba01](https://gitlab.com/open-resources/semantic-release-uv/commit/4afba0194890e76e41a7173841269fb82ead8d64))
+* **deps:** update vitest monorepo to v4.0.13 ([e5fe765](https://gitlab.com/open-resources/semantic-release-uv/commit/e5fe765493fa0b5ce05283d44ad2728b2c2260ba))
+* **deps:** update vitest monorepo to v4.0.14 ([612b477](https://gitlab.com/open-resources/semantic-release-uv/commit/612b4772b0993bc44d63ec67bf8c1c4753a9ad44))
+* **deps:** update vitest monorepo to v4.0.15 ([6749dce](https://gitlab.com/open-resources/semantic-release-uv/commit/6749dcee1228278aa5519c36a934f5c28bf12c53))
+* **deps:** update yarn to v4.12.0 ([4db66e9](https://gitlab.com/open-resources/semantic-release-uv/commit/4db66e9f49f4fed4e64dcd49d44b1ebc5cb4d992))
+* remove prepack script causing tsc not found error in CI ([e0be125](https://gitlab.com/open-resources/semantic-release-uv/commit/e0be1252783dc4778d2ed09d7417eec9a3d1d8f4))
+* Updates build output and packaging configuration ([e9dd522](https://gitlab.com/open-resources/semantic-release-uv/commit/e9dd52273f3884e452e52c5e4a6c2dbccd06f807))
+* use explicit tsc path in prepack for yarn 4 compatibility ([9264c75](https://gitlab.com/open-resources/semantic-release-uv/commit/9264c7529123fa53ab42e312a30f9fa6478920ab))
+* use tsc directly in prepack to avoid yarn state issues during npm publish ([f42d2f2](https://gitlab.com/open-resources/semantic-release-uv/commit/f42d2f2a38315816bcd0f11834f4c338b9d5b657))
+
 ## [1.2.2](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.1...1.2.2) (2025-11-09)
 
 
