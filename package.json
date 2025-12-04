@@ -49,7 +49,7 @@
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "build": "tsc",
-    "prepack": "tsc"
+    "prepack": "node_modules/.bin/tsc"
   },
   "packageManager": "yarn@4.12.0"
 }
