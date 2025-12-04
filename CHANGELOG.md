@@ -1,3 +1,10 @@
+## [1.2.4](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.3...1.2.4) (2025-12-04)
+
+
+### Bug Fixes
+
+* The argument '--username <USERNAME>' cannot be used with '--token <TOKEN>' ([e55f633](https://gitlab.com/open-resources/semantic-release-uv/commit/e55f6337a1a2cb6c64ebcb7637891fafb2ecfe41))
+
 ## [1.2.3](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.2...1.2.3) (2025-12-04)
 
 
