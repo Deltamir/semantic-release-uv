@@ -72,7 +72,7 @@ describe("prepare function", () => {
     expect(utils.spawn).toHaveBeenCalledWith(
       "uv",
       { stdout: undefined, stderr: undefined },
-      ["build", "dist"]
+      ["build"]
     );
   });
 

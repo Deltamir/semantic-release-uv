@@ -8,7 +8,7 @@ import { PrepareContext } from "semantic-release";
 
 async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
   const { logger, nextRelease } = context;
-  const { distDir, pyprojectPath } = new DefaultConfig(pluginConfig);
+  const { pyprojectPath } = new DefaultConfig(pluginConfig);
 
   if (nextRelease === undefined) {
     throw new Error("nextRelease is undefined");
@@ -39,8 +39,8 @@ async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
   logger.log(`Locking dependencies`);
   await spawn(uv, execaOptions, ["lock"]);
 
-  logger.log(`Building distribution in ${distDir}`);
-  await spawn(uv, execaOptions, ["build", distDir]);
+  logger.log(`Building distribution`);
+  await spawn(uv, execaOptions, ["build"]);
 }
 
 export { prepare };
