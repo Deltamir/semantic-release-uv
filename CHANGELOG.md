@@ -1,3 +1,10 @@
+# [1.5.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.4.1...1.5.0) (2025-12-05)
+
+
+### Features
+
+* **utils:** use dynamic uv path for all spawn calls ([5e30699](https://gitlab.com/open-resources/semantic-release-uv/commit/5e306991eb086596b574d85a59225f597b49e3d3))
+
 ## [1.4.1](https://gitlab.com/open-resources/semantic-release-uv/compare/1.4.0...1.4.1) (2025-12-05)
 
 
