@@ -1,3 +1,10 @@
+## [1.2.5](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.4...1.2.5) (2025-12-05)
+
+
+### Bug Fixes
+
+* correct exports for semantic-release lifecycle hooks ([7b233fc](https://gitlab.com/open-resources/semantic-release-uv/commit/7b233fc003150aff38525145d0411c653ae86c13))
+
 ## [1.2.4](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.3...1.2.4) (2025-12-04)
 
 
