@@ -25,6 +25,7 @@ async function ensureUv(logger?: {
         "-c",
         "curl -LsSf https://astral.sh/uv/install.sh | sh",
       ]);
+      await execa("uv", ["--version"]);
       logger?.log("uv installed successfully");
       return { success: true, installed: true };
     } catch (installError) {
