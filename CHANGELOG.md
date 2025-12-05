@@ -1,3 +1,10 @@
+## [1.4.1](https://gitlab.com/open-resources/semantic-release-uv/compare/1.4.0...1.4.1) (2025-12-05)
+
+
+### Bug Fixes
+
+* **ensureUv:** verify uv is functional after installation ([4f79650](https://gitlab.com/open-resources/semantic-release-uv/commit/4f796505ee47df7dc2d192c2666caf098317cdda))
+
 # [1.4.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.3.0...1.4.0) (2025-12-05)
 
 
