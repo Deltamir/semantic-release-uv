@@ -20,10 +20,10 @@ vi.mock("../src/utils", () => ({
 describe("prepare function", () => {
   const fakeContext = {
     nextRelease: {
-        version: "1.2.3",
-        type: "major", // or "minor", "patch", etc.
-      } as NextRelease,
-      logger: { log: vi.fn() } 
+      version: "1.2.3",
+      type: "major", // or "minor", "patch", etc.
+    } as NextRelease,
+    logger: { log: vi.fn() },
   } as PrepareContext;
   beforeEach(() => {
     vi.clearAllMocks();
@@ -40,9 +40,9 @@ describe("prepare function", () => {
     const context = { ...fakeContext, nextRelease: undefined };
     const pluginConfig = {};
 
-    await expect(prepare(pluginConfig, context as unknown as PrepareContext)).rejects.toThrow(
-      "nextRelease is undefined"
-    );
+    await expect(
+      prepare(pluginConfig, context as unknown as PrepareContext)
+    ).rejects.toThrow("nextRelease is undefined");
   });
 
   it("should update the version in pyproject.toml and call spawn", async () => {
@@ -52,7 +52,7 @@ describe("prepare function", () => {
     >;
     const mockSpawn = utils.spawn as unknown as ReturnType<typeof vi.fn>;
 
-    mockNormalize.mockResolvedValueOnce("1.2.3");
+    mockNormalize.mockReturnValueOnce("1.2.3");
 
     mockSpawn.mockResolvedValue({ stdout: "" });
 
@@ -61,10 +61,7 @@ describe("prepare function", () => {
     const updatedToml = fs.readFileSync("pyproject.toml", "utf-8");
     expect(updatedToml).toMatch(/version = "1.2.3"/);
 
-    expect(utils.normalizeVersion).toHaveBeenCalledWith("1.2.3", {
-      stdout: undefined,
-      stderr: undefined,
-    });
+    expect(utils.normalizeVersion).toHaveBeenCalledWith("1.2.3");
 
     expect(utils.spawn).toHaveBeenCalledWith(
       "uv",
