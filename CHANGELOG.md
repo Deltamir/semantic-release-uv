@@ -1,3 +1,10 @@
+## [1.5.1](https://gitlab.com/open-resources/semantic-release-uv/compare/1.5.0...1.5.1) (2025-12-05)
+
+
+### Bug Fixes
+
+* **prepare:** fix uv build command arguments ([075063b](https://gitlab.com/open-resources/semantic-release-uv/commit/075063b244601e1a112b1c832848ed7e4486dacf))
+
 # [1.5.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.4.1...1.5.0) (2025-12-05)
 
 
