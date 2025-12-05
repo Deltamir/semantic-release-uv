@@ -1,9 +1,18 @@
 import { execa, Options, ResultPromise } from "execa";
+import path from "path";
 
 export interface EnsureUvResult {
   success: boolean;
   installed: boolean;
+  uvPath?: string;
   error?: string;
+}
+
+/**
+ * Get the default uv install path
+ */
+function getUvPath(): string {
+  return path.join(process.env.HOME || "~", ".local", "bin", "uv");
 }
 
 /**
@@ -14,26 +23,37 @@ export interface EnsureUvResult {
 async function ensureUv(logger?: {
   log: (message: string) => void;
 }): Promise<EnsureUvResult> {
+  // First try uv from PATH
   try {
     await execa("uv", ["--version"]);
     logger?.log("uv is already installed");
-    return { success: true, installed: false };
+    return { success: true, installed: false, uvPath: "uv" };
   } catch {
-    logger?.log("uv not found, installing...");
+    // uv not in PATH, check if it exists in default install location
+    const uvPath = getUvPath();
     try {
-      await execa("sh", [
-        "-c",
-        "curl -LsSf https://astral.sh/uv/install.sh | sh",
-      ]);
-      await execa("uv", ["--version"]);
-      logger?.log("uv installed successfully");
-      return { success: true, installed: true };
-    } catch (installError) {
-      const errorMessage =
-        installError instanceof Error
-          ? installError.message
-          : String(installError);
-      return { success: false, installed: false, error: errorMessage };
+      await execa(uvPath, ["--version"]);
+      logger?.log("uv found at " + uvPath);
+      return { success: true, installed: false, uvPath };
+    } catch {
+      // uv not found anywhere, install it
+      logger?.log("uv not found, installing...");
+      try {
+        await execa("sh", [
+          "-c",
+          "curl -LsSf https://astral.sh/uv/install.sh | sh",
+        ]);
+        // Verify installation
+        await execa(uvPath, ["--version"]);
+        logger?.log("uv installed successfully at " + uvPath);
+        return { success: true, installed: true, uvPath };
+      } catch (installError) {
+        const errorMessage =
+          installError instanceof Error
+            ? installError.message
+            : String(installError);
+        return { success: false, installed: false, error: errorMessage };
+      }
     }
   }
 }
@@ -120,4 +140,4 @@ function spawn(
   return cp;
 }
 
-export { ensureUv, normalizeVersion, spawn };
+export { ensureUv, getUvPath, normalizeVersion, spawn };
