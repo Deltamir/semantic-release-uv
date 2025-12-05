@@ -5,6 +5,7 @@ import FormData from "form-data";
 import { DefaultConfig } from "./default-options";
 import { PluginConfig } from "./types";
 import { VerifyConditionsContext } from "semantic-release";
+import { ensureUv } from "./utils";
 
 async function verify(
   pluginConfig: PluginConfig,
@@ -12,6 +13,12 @@ async function verify(
 ) {
   const { logger } = context;
   const { pyprojectPath, repoUrl } = new DefaultConfig(pluginConfig);
+
+  // Ensure uv is installed
+  const uvResult = await ensureUv(logger);
+  if (!uvResult.success) {
+    throw new Error(`Failed to install uv: ${uvResult.error}`);
+  }
 
   const username = process.env["PYPI_USERNAME"]
     ? process.env["PYPI_USERNAME"]

@@ -1,5 +1,42 @@
 import { execa, Options, ResultPromise } from "execa";
 
+export interface EnsureUvResult {
+  success: boolean;
+  installed: boolean;
+  error?: string;
+}
+
+/**
+ * Check if uv is installed, and install it if not.
+ * @param logger - Optional logger to log messages
+ * @returns Result object indicating success/failure and whether uv was installed
+ */
+async function ensureUv(logger?: {
+  log: (message: string) => void;
+}): Promise<EnsureUvResult> {
+  try {
+    await execa("uv", ["--version"]);
+    logger?.log("uv is already installed");
+    return { success: true, installed: false };
+  } catch {
+    logger?.log("uv not found, installing...");
+    try {
+      await execa("sh", [
+        "-c",
+        "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      ]);
+      logger?.log("uv installed successfully");
+      return { success: true, installed: true };
+    } catch (installError) {
+      const errorMessage =
+        installError instanceof Error
+          ? installError.message
+          : String(installError);
+      return { success: false, installed: false, error: errorMessage };
+    }
+  }
+}
+
 /**
  * Normalize a version string according to PEP 440.
  * This mimics Python's packaging.version.Version normalization.
@@ -82,4 +119,4 @@ function spawn(
   return cp;
 }
 
-export { normalizeVersion, spawn };
+export { ensureUv, normalizeVersion, spawn };

@@ -2,14 +2,18 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { verify } from "../src/verify"; // Replace with the actual path
 import { VerifyConditionsContext } from "semantic-release";
 import { vol } from "memfs";
-
+import * as utils from "../src/utils";
 
 // Mock fs everywhere else with the memfs version.
 vi.mock("fs", async () => {
   const memfs = await vi.importActual("memfs");
-  return { default: memfs.fs, ...memfs.fs as object};
+  return { default: memfs.fs, ...(memfs.fs as object) };
 });
 
+// Mock utils
+vi.mock("../src/utils", () => ({
+  ensureUv: vi.fn(),
+}));
 
 describe("verify function", () => {
   beforeEach(() => {
@@ -17,7 +21,27 @@ describe("verify function", () => {
     process.env["PYPI_USERNAME"] = "user";
     process.env["PYPI_REPO_URL"] = "http://pypi.mockup.com";
     process.env["PYPI_TOKEN"] = "token";
-    vol.reset()
+    vol.reset();
+    // Default: uv is available
+    (utils.ensureUv as ReturnType<typeof vi.fn>).mockResolvedValue({
+      success: true,
+      installed: false,
+    });
+  });
+
+  it("should throw an error if uv installation fails", async () => {
+    (utils.ensureUv as ReturnType<typeof vi.fn>).mockResolvedValue({
+      success: false,
+      installed: false,
+      error: "curl failed",
+    });
+
+    const context = { logger: { log: vi.fn() } } as VerifyConditionsContext;
+    const pluginConfig = {};
+
+    await expect(verify(pluginConfig, context)).rejects.toThrow(
+      "Failed to install uv: curl failed"
+    );
   });
 
   it("should throw an error if PYPI_TOKEN is not set", async () => {
@@ -54,11 +78,9 @@ describe("verify function", () => {
     const context = { logger: { log: vi.fn() } } as VerifyConditionsContext;
     const pluginConfig = {};
 
-    vol.fromJSON(
-      {
-        'pyproject.toml': '[project]\nname = "my-project"\nnot-version = "1.0.0"',
-      },
-    )
+    vol.fromJSON({
+      "pyproject.toml": '[project]\nname = "my-project"\nnot-version = "1.0.0"',
+    });
 
     await expect(verify(pluginConfig, context)).rejects.toThrow(
       "Could not find version in pyproject.toml"
@@ -71,11 +93,9 @@ describe("verify function", () => {
     const context = { logger: { log: vi.fn() } } as VerifyConditionsContext;
     const pluginConfig = {};
 
-    vol.fromJSON(
-      {
-        'pyproject.toml': '[project]\nname = "my-project"\nversion = "1.0.0"',
-      },
-    )
+    vol.fromJSON({
+      "pyproject.toml": '[project]\nname = "my-project"\nversion = "1.0.0"',
+    });
 
     await expect(verify(pluginConfig, context)).resolves.not.toThrow();
   });
@@ -86,28 +106,22 @@ describe("verify function", () => {
     const context = { logger: { log: vi.fn() } } as VerifyConditionsContext;
     const pluginConfig = {};
 
-    vol.fromJSON(
-      {
-        'pyproject.toml': '[project]\nname = "my-project"\nversion = "1.0.0"',
-      },
-    )
+    vol.fromJSON({
+      "pyproject.toml": '[project]\nname = "my-project"\nversion = "1.0.0"',
+    });
 
     await expect(verify(pluginConfig, context)).resolves.not.toThrow();
   });
-
 
   it("should verify authentication without failure even if code is not 403", async () => {
     process.env["PYPI_REPO_URL"] += "/404";
     const context = { logger: { log: vi.fn() } } as VerifyConditionsContext;
     const pluginConfig = {};
 
-    vol.fromJSON(
-      {
-        'pyproject.toml': '[project]\nname = "my-project"\nversion = "1.0.0"',
-      },
-    )
+    vol.fromJSON({
+      "pyproject.toml": '[project]\nname = "my-project"\nversion = "1.0.0"',
+    });
 
     await expect(verify(pluginConfig, context)).resolves.not.toThrow();
   });
-
 });

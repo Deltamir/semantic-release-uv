@@ -1,8 +1,71 @@
-import { describe, it, expect, vi } from "vitest";
-import { normalizeVersion, spawn } from "../src/utils";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { ensureUv, normalizeVersion, spawn } from "../src/utils";
 import { execa } from "execa";
 
 vi.mock("execa");
+
+describe("ensureUv", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("should return success with installed=false if uv is already available", async () => {
+    const mockExeca = execa as unknown as ReturnType<typeof vi.fn>;
+    mockExeca.mockResolvedValueOnce({ stdout: "uv 0.1.0" });
+
+    const logger = { log: vi.fn() };
+    const result = await ensureUv(logger);
+
+    expect(result).toEqual({ success: true, installed: false });
+    expect(mockExeca).toHaveBeenCalledTimes(1);
+    expect(mockExeca).toHaveBeenCalledWith("uv", ["--version"]);
+    expect(logger.log).toHaveBeenCalledWith("uv is already installed");
+  });
+
+  it("should return success with installed=true if uv was installed", async () => {
+    const mockExeca = execa as unknown as ReturnType<typeof vi.fn>;
+    mockExeca
+      .mockRejectedValueOnce(new Error("command not found: uv"))
+      .mockResolvedValueOnce({ stdout: "" });
+
+    const logger = { log: vi.fn() };
+    const result = await ensureUv(logger);
+
+    expect(result).toEqual({ success: true, installed: true });
+    expect(mockExeca).toHaveBeenCalledTimes(2);
+    expect(mockExeca).toHaveBeenNthCalledWith(1, "uv", ["--version"]);
+    expect(mockExeca).toHaveBeenNthCalledWith(2, "sh", [
+      "-c",
+      "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    ]);
+    expect(logger.log).toHaveBeenCalledWith("uv not found, installing...");
+    expect(logger.log).toHaveBeenCalledWith("uv installed successfully");
+  });
+
+  it("should return failure with error if installation fails", async () => {
+    const mockExeca = execa as unknown as ReturnType<typeof vi.fn>;
+    mockExeca
+      .mockRejectedValueOnce(new Error("command not found: uv"))
+      .mockRejectedValueOnce(new Error("curl failed"));
+
+    const logger = { log: vi.fn() };
+    const result = await ensureUv(logger);
+
+    expect(result).toEqual({
+      success: false,
+      installed: false,
+      error: "curl failed",
+    });
+  });
+
+  it("should work without logger", async () => {
+    const mockExeca = execa as unknown as ReturnType<typeof vi.fn>;
+    mockExeca.mockResolvedValueOnce({ stdout: "uv 0.1.0" });
+
+    const result = await ensureUv();
+    expect(result).toEqual({ success: true, installed: false });
+  });
+});
 
 describe("normalizeVersion", () => {
   it("should normalize basic versions", () => {
