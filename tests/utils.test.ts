@@ -32,7 +32,7 @@ describe("ensureUv", () => {
     const result = await ensureUv(logger);
 
     expect(result).toEqual({ success: true, installed: true });
-    expect(mockExeca).toHaveBeenCalledTimes(2);
+    expect(mockExeca).toHaveBeenCalledTimes(3);
     expect(mockExeca).toHaveBeenNthCalledWith(1, "uv", ["--version"]);
     expect(mockExeca).toHaveBeenNthCalledWith(2, "sh", [
       "-c",
