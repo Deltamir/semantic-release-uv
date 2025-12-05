@@ -1,3 +1,10 @@
+# [1.3.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.5...1.3.0) (2025-12-05)
+
+
+### Features
+
+* replace Python-based version normalization with pure TypeScript ([59386ef](https://gitlab.com/open-resources/semantic-release-uv/commit/59386ef4934e317c83ff61c256615cdd7fed2f74))
+
 ## [1.2.5](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.4...1.2.5) (2025-12-05)
 
 
