@@ -1,52 +1,86 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { ensureUv, normalizeVersion, spawn } from "../src/utils";
 import { execa } from "execa";
+import path from "path";
 
 vi.mock("execa");
+
+const defaultUvPath = path.join(process.env.HOME || "~", ".local", "bin", "uv");
 
 describe("ensureUv", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it("should return success with installed=false if uv is already available", async () => {
+  it("should return success with uvPath='uv' if uv is in PATH", async () => {
     const mockExeca = execa as unknown as ReturnType<typeof vi.fn>;
     mockExeca.mockResolvedValueOnce({ stdout: "uv 0.1.0" });
 
     const logger = { log: vi.fn() };
     const result = await ensureUv(logger);
 
-    expect(result).toEqual({ success: true, installed: false });
+    expect(result).toEqual({ success: true, installed: false, uvPath: "uv" });
     expect(mockExeca).toHaveBeenCalledTimes(1);
     expect(mockExeca).toHaveBeenCalledWith("uv", ["--version"]);
     expect(logger.log).toHaveBeenCalledWith("uv is already installed");
   });
 
-  it("should return success with installed=true if uv was installed", async () => {
+  it("should return success with uvPath if uv found at default location", async () => {
     const mockExeca = execa as unknown as ReturnType<typeof vi.fn>;
     mockExeca
-      .mockRejectedValueOnce(new Error("command not found: uv"))
-      .mockResolvedValueOnce({ stdout: "" });
+      .mockRejectedValueOnce(new Error("command not found: uv")) // uv not in PATH
+      .mockResolvedValueOnce({ stdout: "uv 0.1.0" }); // uv found at default path
 
     const logger = { log: vi.fn() };
     const result = await ensureUv(logger);
 
-    expect(result).toEqual({ success: true, installed: true });
-    expect(mockExeca).toHaveBeenCalledTimes(3);
+    expect(result).toEqual({
+      success: true,
+      installed: false,
+      uvPath: defaultUvPath,
+    });
+    expect(mockExeca).toHaveBeenCalledTimes(2);
     expect(mockExeca).toHaveBeenNthCalledWith(1, "uv", ["--version"]);
-    expect(mockExeca).toHaveBeenNthCalledWith(2, "sh", [
+    expect(mockExeca).toHaveBeenNthCalledWith(2, defaultUvPath, ["--version"]);
+    expect(logger.log).toHaveBeenCalledWith("uv found at " + defaultUvPath);
+  });
+
+  it("should return success with installed=true if uv was installed", async () => {
+    const mockExeca = execa as unknown as ReturnType<typeof vi.fn>;
+    mockExeca
+      .mockRejectedValueOnce(new Error("command not found: uv")) // uv not in PATH
+      .mockRejectedValueOnce(new Error("not found")) // uv not at default path
+      .mockResolvedValueOnce({ stdout: "" }) // install script succeeds
+      .mockResolvedValueOnce({ stdout: "uv 0.1.0" }); // verify after install
+
+    const logger = { log: vi.fn() };
+    const result = await ensureUv(logger);
+
+    expect(result).toEqual({
+      success: true,
+      installed: true,
+      uvPath: defaultUvPath,
+    });
+    expect(mockExeca).toHaveBeenCalledTimes(4);
+    expect(mockExeca).toHaveBeenNthCalledWith(1, "uv", ["--version"]);
+    expect(mockExeca).toHaveBeenNthCalledWith(2, defaultUvPath, ["--version"]);
+    expect(mockExeca).toHaveBeenNthCalledWith(3, "sh", [
       "-c",
       "curl -LsSf https://astral.sh/uv/install.sh | sh",
     ]);
+    expect(mockExeca).toHaveBeenNthCalledWith(4, defaultUvPath, ["--version"]);
     expect(logger.log).toHaveBeenCalledWith("uv not found, installing...");
-    expect(logger.log).toHaveBeenCalledWith("uv installed successfully");
+    expect(logger.log).toHaveBeenCalledWith(
+      "uv installed successfully at " + defaultUvPath
+    );
   });
 
   it("should return failure with error if installation fails", async () => {
     const mockExeca = execa as unknown as ReturnType<typeof vi.fn>;
     mockExeca
-      .mockRejectedValueOnce(new Error("command not found: uv"))
-      .mockRejectedValueOnce(new Error("curl failed"));
+      .mockRejectedValueOnce(new Error("command not found: uv")) // uv not in PATH
+      .mockRejectedValueOnce(new Error("not found")) // uv not at default path
+      .mockRejectedValueOnce(new Error("curl failed")); // install script fails
 
     const logger = { log: vi.fn() };
     const result = await ensureUv(logger);
@@ -63,7 +97,7 @@ describe("ensureUv", () => {
     mockExeca.mockResolvedValueOnce({ stdout: "uv 0.1.0" });
 
     const result = await ensureUv();
-    expect(result).toEqual({ success: true, installed: false });
+    expect(result).toEqual({ success: true, installed: false, uvPath: "uv" });
   });
 });
 

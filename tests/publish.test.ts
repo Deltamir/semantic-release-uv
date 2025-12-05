@@ -6,6 +6,7 @@ import { PublishContext } from "semantic-release";
 // Mock de spawn
 vi.mock("../src/utils", () => ({
   spawn: vi.fn(),
+  getUvPath: vi.fn(() => "uv"),
 }));
 
 describe("publish function", () => {

@@ -1,5 +1,5 @@
 import { Options } from "execa";
-import { spawn } from "./utils";
+import { getUvPath, spawn } from "./utils";
 import { DefaultConfig } from "./default-options";
 import { PluginConfig } from "./types";
 import { PublishContext } from "semantic-release";
@@ -20,12 +20,13 @@ async function publish(pluginConfig: PluginConfig, context: PublishContext) {
     : "token";
   const repo = process.env["PYPI_REPO_URL"] ?? repoUrl;
   const token = process.env["PYPI_TOKEN"];
+  const uv = getUvPath();
 
   if (!process.env["PYPI_TOKEN"]) {
     throw new Error("Environment variable PYPI_TOKEN is not set");
   }
 
-  await spawn("uv", execaOptions, [
+  await spawn(uv, execaOptions, [
     "publish",
     "--publish-url",
     repo,

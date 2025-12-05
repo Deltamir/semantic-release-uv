@@ -1,7 +1,7 @@
 import TOML from "smol-toml";
 import fs from "fs";
 import { Options } from "execa";
-import { normalizeVersion, spawn } from "./utils";
+import { getUvPath, normalizeVersion, spawn } from "./utils";
 import { DefaultConfig } from "./default-options";
 import { PluginConfig } from "./types";
 import { PrepareContext } from "semantic-release";
@@ -20,6 +20,7 @@ async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
   };
 
   const version = normalizeVersion(nextRelease.version);
+  const uv = getUvPath();
 
   logger.log(`Setting version to ${version} in pyproject.toml`);
   const toml = fs.readFileSync(pyprojectPath, {
@@ -36,10 +37,10 @@ async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
   });
 
   logger.log(`Locking dependencies`);
-  await spawn("uv", execaOptions, ["lock"]);
+  await spawn(uv, execaOptions, ["lock"]);
 
   logger.log(`Building distribution in ${distDir}`);
-  await spawn("uv", execaOptions, ["build", distDir]);
+  await spawn(uv, execaOptions, ["build", distDir]);
 }
 
 export { prepare };

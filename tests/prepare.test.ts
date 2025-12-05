@@ -15,6 +15,7 @@ vi.mock("fs", async () => {
 vi.mock("../src/utils", () => ({
   normalizeVersion: vi.fn(),
   spawn: vi.fn(),
+  getUvPath: vi.fn(() => "uv"),
 }));
 
 describe("prepare function", () => {
