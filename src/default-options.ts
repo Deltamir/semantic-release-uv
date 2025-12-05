@@ -16,10 +16,6 @@ export class DefaultConfig {
     return path.join(this.srcDir, "pyproject.toml");
   }
 
-  public get distDir() {
-    return this.config.distDir ?? "dist";
-  }
-
   public get repoUrl() {
     return this.config.repoUrl ?? "https://upload.pypi.org/legacy/";
   }
