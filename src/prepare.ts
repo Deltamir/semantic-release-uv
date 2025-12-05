@@ -19,7 +19,7 @@ async function prepare(pluginConfig: PluginConfig, context: PrepareContext) {
     stderr: context.stderr,
   };
 
-  const version = await normalizeVersion(nextRelease.version, execaOptions);
+  const version = normalizeVersion(nextRelease.version);
 
   logger.log(`Setting version to ${version} in pyproject.toml`);
   const toml = fs.readFileSync(pyprojectPath, {
