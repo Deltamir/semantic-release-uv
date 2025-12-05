@@ -1,3 +1,10 @@
+# [1.4.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.3.0...1.4.0) (2025-12-05)
+
+
+### Features
+
+* **verify:** add automatic uv installation check ([2ded370](https://gitlab.com/open-resources/semantic-release-uv/commit/2ded3707bffb4d580fc71ecb04f8c7b12b230fdd))
+
 # [1.3.0](https://gitlab.com/open-resources/semantic-release-uv/compare/1.2.5...1.3.0) (2025-12-05)
 
 
