@@ -57,7 +57,7 @@ Note that this plugin modifies the version inside of `pyproject.toml` and potent
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    "semantic-release-uv",
+    "@open_resources/semantic-release-uv",
     [
       "@semantic-release/git",
       {
