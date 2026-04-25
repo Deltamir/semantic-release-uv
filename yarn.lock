@@ -3419,14 +3419,14 @@ __metadata:
   linkType: hard
 
 "eslint-formatter-gitlab@npm:^7.0.0":
-  version: 7.0.1
-  resolution: "eslint-formatter-gitlab@npm:7.0.1"
+  version: 7.1.0
+  resolution: "eslint-formatter-gitlab@npm:7.1.0"
   dependencies:
     eslint-formatter-codeclimate: "npm:^2.0.0"
     yaml: "npm:^2.0.0"
   peerDependencies:
     eslint: ">=9"
-  checksum: 10c0/d917276805a43498ac6e06da681ae6bf4522dd07b4c39444c11c7ca9446565878adcf80211896ff69bfb2bfe062c9168d93472263d5664c314143055684da4cd
+  checksum: 10c0/4c7ceeb45752c54430e2665d625472f17c4a985665bf83defd4c5f81c1755ee36608a25ae50f7dd3319364a6edb87e607135b1f305f46b5c3c4a0b31e107fd1a
   languageName: node
   linkType: hard
 
