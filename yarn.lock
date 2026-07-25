@@ -1043,7 +1043,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mswjs/interceptors@npm:^0.41.0, @mswjs/interceptors@npm:^0.41.3":
+"@mswjs/interceptors@npm:^0.41.3":
   version: 0.41.9
   resolution: "@mswjs/interceptors@npm:0.41.9"
   dependencies:
@@ -1054,6 +1054,20 @@ __metadata:
     outvariant: "npm:^1.4.3"
     strict-event-emitter: "npm:^0.5.1"
   checksum: 10c0/2efff40877e07ce29846be76c2683177308a72a3ccfe4c096b496412a279acd92b5b9cdad40ad71c36b149a4a7d9e9b4e7d295893a8ba9661b43334f5784ecd8
+  languageName: node
+  linkType: hard
+
+"@mswjs/interceptors@npm:^0.42.0":
+  version: 0.42.3
+  resolution: "@mswjs/interceptors@npm:0.42.3"
+  dependencies:
+    "@open-draft/until": "npm:^3.0.1"
+    "@types/debug": "npm:^4.1.13"
+    debug: "npm:^4.4.3"
+    is-node-process: "npm:^1.2.0"
+    outvariant: "npm:^1.4.3"
+    rettime: "npm:^0.11.11"
+  checksum: 10c0/09d3da7527fda31b39610c8f1bccc6b339212862481b61614332146cf20938be6ec023851b66415f506016f0916e74d60f524e2f4305173cb8ecdc58614e39ac
   languageName: node
   linkType: hard
 
@@ -1450,12 +1464,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@open-draft/until@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@open-draft/until@npm:3.0.1"
+  checksum: 10c0/a89d1e5016241d7de5dee89840efbe9250d8102315a275c181aa68269c405e41a7f1724441fbe867af8a873c0f35c97c5f11917f480053a55924b80c2368bfb0
+  languageName: node
+  linkType: hard
+
 "@open_resources/semantic-release-uv@workspace:.":
   version: 0.0.0-use.local
   resolution: "@open_resources/semantic-release-uv@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.24.0"
-    "@mswjs/interceptors": "npm:^0.41.0"
+    "@mswjs/interceptors": "npm:^0.42.0"
     "@types/got": "npm:^9.6.12"
     "@types/node": "npm:^24.0.0"
     "@vitest/coverage-istanbul": "npm:^4.0.0"
@@ -1911,6 +1932,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/debug@npm:^4.1.13":
+  version: 4.1.13
+  resolution: "@types/debug@npm:4.1.13"
+  dependencies:
+    "@types/ms": "npm:*"
+  checksum: 10c0/e5e124021bbdb23a82727eee0a726ae0fc8a3ae1f57253cbcc47497f259afb357de7f6941375e773e1abbfa1604c1555b901a409d762ec2bb4c1612131d4afb7
+  languageName: node
+  linkType: hard
+
 "@types/deep-eql@npm:*":
   version: 4.0.2
   resolution: "@types/deep-eql@npm:4.0.2"
@@ -1961,6 +1991,13 @@ __metadata:
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
   checksum: 10c0/a996a745e6c5d60292f36731dd41341339d4eeed8180bb09226e5c8d23759067692b1d88e5d91d72ee83dfc00d3aca8e7bd43ea120516c17922cbcb7c3e252db
+  languageName: node
+  linkType: hard
+
+"@types/ms@npm:*":
+  version: 2.1.0
+  resolution: "@types/ms@npm:2.1.0"
+  checksum: 10c0/5ce692ffe1549e1b827d99ef8ff71187457e0eb44adbae38fdf7b9a74bae8d20642ee963c14516db1d35fa2652e65f47680fdf679dcbde52bbfadd021f497225
   languageName: node
   linkType: hard
 
