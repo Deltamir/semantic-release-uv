@@ -874,8 +874,8 @@ __metadata:
   linkType: hard
 
 "@mswjs/interceptors@npm:^0.42.0":
-  version: 0.42.3
-  resolution: "@mswjs/interceptors@npm:0.42.3"
+  version: 0.42.5
+  resolution: "@mswjs/interceptors@npm:0.42.5"
   dependencies:
     "@open-draft/until": "npm:^3.0.1"
     "@types/debug": "npm:^4.1.13"
@@ -883,7 +883,7 @@ __metadata:
     is-node-process: "npm:^1.2.0"
     outvariant: "npm:^1.4.3"
     rettime: "npm:^0.11.11"
-  checksum: 10c0/09d3da7527fda31b39610c8f1bccc6b339212862481b61614332146cf20938be6ec023851b66415f506016f0916e74d60f524e2f4305173cb8ecdc58614e39ac
+  checksum: 10c0/69649fc2e8338c85eb4978342ba4c2b4728bb0e4bcd459feceaac9813bc50afc3ec0e4b04be1e0438f6ebce2f61d36b8ac34792269b98d4f0ac170feea4f15c8
   languageName: node
   linkType: hard
 
