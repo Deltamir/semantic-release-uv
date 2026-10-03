@@ -873,17 +873,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mswjs/interceptors@npm:^0.42.0":
-  version: 0.42.5
-  resolution: "@mswjs/interceptors@npm:0.42.5"
+"@mswjs/interceptors@npm:^0.45.0":
+  version: 0.45.6
+  resolution: "@mswjs/interceptors@npm:0.45.6"
   dependencies:
     "@open-draft/until": "npm:^3.0.1"
     "@types/debug": "npm:^4.1.13"
     debug: "npm:^4.4.3"
     is-node-process: "npm:^1.2.0"
     outvariant: "npm:^1.4.3"
-    rettime: "npm:^0.11.11"
-  checksum: 10c0/69649fc2e8338c85eb4978342ba4c2b4728bb0e4bcd459feceaac9813bc50afc3ec0e4b04be1e0438f6ebce2f61d36b8ac34792269b98d4f0ac170feea4f15c8
+    rettime: "npm:^0.11.12"
+  checksum: 10c0/4bc8a464d2a1ef94e99fbad16e9dcea93a2031e8847eef3709b57a50969bf1421c54b39c33416a619394fd2a01b90da06fe3adde9aa385e6ead85a24ad91d294
   languageName: node
   linkType: hard
 
@@ -1292,7 +1292,7 @@ __metadata:
   resolution: "@open_resources/semantic-release-uv@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.24.0"
-    "@mswjs/interceptors": "npm:^0.42.0"
+    "@mswjs/interceptors": "npm:^0.45.0"
     "@types/got": "npm:^9.6.12"
     "@types/node": "npm:^24.0.0"
     "@vitest/coverage-istanbul": "npm:^4.0.0"
@@ -6317,6 +6317,13 @@ __metadata:
   version: 0.11.11
   resolution: "rettime@npm:0.11.11"
   checksum: 10c0/021fc9d9870ce04f032952e63fc5576f3f8e7c9c15513b1a479a64646df90239802eef6d60a98cbfb6ac87bb623d4f120a8ee71193d02984e3d2915c28695f6e
+  languageName: node
+  linkType: hard
+
+"rettime@npm:^0.11.12":
+  version: 0.11.12
+  resolution: "rettime@npm:0.11.12"
+  checksum: 10c0/d785a4b82535ccff6a47e9418456140d3b9317914e4a5134c41ba2e07f0573397b76e299ab9f4bbb73227a19f370056c2d5df6c4703193a9c5741f24705bd952
   languageName: node
   linkType: hard
 
